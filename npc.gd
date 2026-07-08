@@ -1,4 +1,4 @@
-extends StaticBody2D
+extends CharacterBody2D
 @onready var dialogue_box = $Sprite2D2
 @onready var dialogue_text = $Sprite2D2/Label
 
@@ -9,12 +9,25 @@ var dialogue_stage = 0
 
 var in_zone = false
 
+var direction = 1
+var SPEED = 25
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
+	if in_zone != true:
+		if position.y <= 227:
+			direction *= -1
+		if position.y >= 355:
+			direction *= -1
+		velocity = Vector2(0, direction*SPEED)
+	else:
+		velocity.y = 0
+		
+	velocity.x = 0
+			
 	if in_zone and Input.is_action_just_pressed('interact'):
 		$Label.hide()
 		$Sprite2D3.hide()
@@ -36,19 +49,23 @@ func _process(delta: float) -> void:
 	if dialogue_active == false:
 		dialogue_box.hide()
 		dialogue_text.hide()
+		
+	if !in_zone: #Prevents Link from being able to move it
+		move_and_slide()
 
 func update_dialogue():
 	dialogue_text.text = dialogue[dialogue_stage][dialogue_message]
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is CharacterBody2D:
-		in_zone = true
-		$Label.show()
-		$Sprite2D3.show()
+		if body.name == "Link":
+			in_zone = true
+			$Label.show()
+			$Sprite2D3.show()
 
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
-	if body is CharacterBody2D:
+	if body is CharacterBody2D and body.name == "Link":
 		in_zone = false
 		dialogue_active = false
 		$Label.hide()
