@@ -31,6 +31,7 @@ shadow_size = 0
 shadow_color = Color(0, 0, 0, 1)
 
 [node name="NPC" type="CharacterBody2D" unique_id=1977578793]
+motion_mode = 1
 script = ExtResource("1_xxcha")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1137538639]
@@ -48,17 +49,16 @@ shape = SubResource("RectangleShape2D_ul7y6")
 shape = SubResource("RectangleShape2D_mcvl2")
 
 [node name="Sprite2D2" type="Sprite2D" parent="." unique_id=362327248]
-visible = false
-position = Vector2(-32, -82)
+position = Vector2(32, -82)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("3_ul7y6")
+flip_h = true
 
 [node name="Label" type="Label" parent="Sprite2D2" unique_id=1909107146]
-visible = false
-offset_left = -103.749985
+offset_left = -85.0
 offset_top = -103.74999
-offset_right = 79.999985
-offset_bottom = 13.75
+offset_right = 105.0
+offset_bottom = 13.750008
 label_settings = SubResource("LabelSettings_d61ma")
 horizontal_alignment = 1
 vertical_alignment = 1
