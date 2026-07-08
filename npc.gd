@@ -68,5 +68,6 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body is CharacterBody2D and body.name == "Link":
 		in_zone = false
 		dialogue_active = false
+		dialogue_message = 0
 		$Label.hide()
 		$Sprite2D3.hide()
