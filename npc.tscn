@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://diam88pe4kv4f"]
+
+[ext_resource type="Script" uid="uid://dvsrck5mwfqxi" path="res://npc.gd" id="1_xxcha"]
+[ext_resource type="Texture2D" uid="uid://ddd31j0prr56t" path="res://pixil-frame-0 (3).png" id="2_kh24r"]
+[ext_resource type="Texture2D" uid="uid://csiqwldfbocjw" path="res://pixil-frame-0 (4).png" id="3_ul7y6"]
+[ext_resource type="FontFile" uid="uid://bqyd1dfu7sa3t" path="res://PressStart2P-Regular.ttf" id="4_bc6q4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ul7y6"]
+size = Vector2(64, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mcvl2"]
+size = Vector2(192, 192)
+
+[sub_resource type="LabelSettings" id="LabelSettings_d61ma"]
+font = ExtResource("4_bc6q4")
+font_size = 13
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_ul7y6"]
+offsets = PackedFloat32Array(0.0072115385, 1)
+colors = PackedColorArray(1, 1, 1, 0.2509804, 1, 1, 1, 0.8117647)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bc6q4"]
+gradient = SubResource("Gradient_ul7y6")
+fill_to = Vector2(0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ul7y6"]
+font = ExtResource("4_bc6q4")
+font_size = 9
+shadow_size = 0
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="NPC" type="StaticBody2D" unique_id=503106520]
+script = ExtResource("1_xxcha")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1137538639]
+texture = ExtResource("2_kh24r")
+hframes = 4
+vframes = 4
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2022293306]
+shape = SubResource("RectangleShape2D_ul7y6")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=2049681925]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1037818774]
+shape = SubResource("RectangleShape2D_mcvl2")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=362327248]
+visible = false
+position = Vector2(-32, -82)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_ul7y6")
+
+[node name="Label" type="Label" parent="Sprite2D2" unique_id=1909107146]
+visible = false
+offset_left = -103.749985
+offset_top = -103.74999
+offset_right = 79.999985
+offset_bottom = 13.75
+label_settings = SubResource("LabelSettings_d61ma")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Sprite2D3" type="Sprite2D" parent="." unique_id=548752496]
+visible = false
+position = Vector2(-0.50000024, 52.5)
+scale = Vector2(2.578125, 0.29687503)
+texture = SubResource("GradientTexture2D_bc6q4")
+
+[node name="Label" type="Label" parent="." unique_id=2010780854]
+visible = false
+offset_left = -151.0
+offset_top = 48.000004
+offset_right = 149.0
+offset_bottom = 77.0
+text = "(Press Space or E)"
+label_settings = SubResource("LabelSettings_ul7y6")
+horizontal_alignment = 1
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
