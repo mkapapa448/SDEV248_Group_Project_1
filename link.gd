@@ -42,5 +42,6 @@ func _physics_process(delta: float) -> void:
 		#pass
 
 func impact(vel):
+	velocity = Vector2(0, 0)
 	impacted = true
 	impact_vel = vel
