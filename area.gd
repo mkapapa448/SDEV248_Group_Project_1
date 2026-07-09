@@ -2,11 +2,12 @@ extends Area2D
 @export var camera: Camera2D # Drag your Camera2D node into this slot in the Inspector
 @export var player: CharacterBody2D # Drag your Camera2D node into this slot in the Inspector
 
+var timesdone = 0
 
 func _on_body_entered(body: CharacterBody2D) -> void:
 	if Game.switching:
 		return
-	if body.name == "Link":
+	if body.name == "Link" and timesdone != 0:
 		var target_coords = self.global_position
 		if target_coords != camera.global_position:
 			Game.switching = true
@@ -31,6 +32,9 @@ func _on_body_entered(body: CharacterBody2D) -> void:
 			
 			await tween.finished
 			Game.switching = false
+	else:
+		timesdone += 1
+		return
 
 func _ready() -> void:
 	pass # Replace with function body.

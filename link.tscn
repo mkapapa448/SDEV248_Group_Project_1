@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://ddd31j0prr56t" path="res://pixil-frame-0 (3).png" id="1_hqdcc"]
 [ext_resource type="Script" uid="uid://d13q8b5vq76xb" path="res://link.gd" id="1_hwd60"]
+[ext_resource type="Texture2D" uid="uid://b1frs6703akm3" path="res://pixil-frame-0 (7).png" id="2_jnxyl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hwd60"]
 size = Vector2(56, 56)
@@ -10,7 +11,14 @@ size = Vector2(56, 56)
 motion_mode = 1
 script = ExtResource("1_hwd60")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=430941940]
+[node name="ComputerLink" type="Sprite2D" parent="." unique_id=2096532270]
+visible = false
+position = Vector2(0, -32)
+scale = Vector2(2, 2)
+texture = ExtResource("2_jnxyl")
+hframes = 2
+
+[node name="Link" type="Sprite2D" parent="." unique_id=430941940]
 texture = ExtResource("1_hqdcc")
 hframes = 4
 vframes = 4

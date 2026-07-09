@@ -6,12 +6,20 @@ const JUMP_VELOCITY = -400.0
 var impacted = false
 var impacts = 0
 var impact_vel: Vector2
+var has_computer = false
 
 signal changeScene
 func change_scene(scenechange):
 	changeScene.emit(scenechange)
 	
 func _physics_process(delta: float) -> void:
+	if has_computer:
+		$Link.hide()
+		$ComputerLink.show()
+	else:
+		$Link.show()
+		$ComputerLink.hide()
+	
 	if Game.switching == false and impacted == false:
 		# Get the input direction and handle the movement/deceleration.
 		# As good practice, you should replace UI actions with custom gameplay actions.
@@ -45,3 +53,4 @@ func impact(vel):
 	velocity = Vector2(0, 0)
 	impacted = true
 	impact_vel = vel
+	Game.lives -= 1

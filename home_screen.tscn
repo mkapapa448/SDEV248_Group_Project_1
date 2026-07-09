@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://yefu6uodhncu"]
+
+[ext_resource type="Script" uid="uid://bfvk07vtbxbsm" path="res://home_screen.gd" id="1_olt8n"]
+[ext_resource type="FontFile" uid="uid://bqyd1dfu7sa3t" path="res://PressStart2P-Regular.ttf" id="2_ktig4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ee4yu"]
+font = ExtResource("2_ktig4")
+font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_tfejn"]
+font_size = 30
+
+[node name="HomeScreen" type="Control" unique_id=1397661995]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_olt8n")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1099365008]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.08870458, 0.5847927, 0.26329687, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=983332089]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=405227052]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1464963589]
+layout_mode = 2
+text = "The Legend of Zelda:
+Link's Elderly Adventure"
+label_settings = SubResource("LabelSettings_ee4yu")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer" unique_id=786329633]
+layout_mode = 2
+text = "
+Link and Zelda are happily celebrating their 50th anniversary,
+when Link is caught off guard!"
+label_settings = SubResource("LabelSettings_tfejn")
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer" unique_id=1877331656]
+layout_mode = 2
+theme_override_constants/margin_left = 300
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 300
+theme_override_constants/margin_bottom = 10
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer" unique_id=1726241668]
+layout_mode = 2
+text = "Begin Adventure"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/Button" to="." method="_on_button_pressed"]

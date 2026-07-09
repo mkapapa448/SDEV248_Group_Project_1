@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://ic4yb7dkbj6f"]
+
+[ext_resource type="Script" uid="uid://cng0oh8xq77hd" path="res://computer.gd" id="1_18hgq"]
+[ext_resource type="Texture2D" uid="uid://ddd31j0prr56t" path="res://pixil-frame-0 (3).png" id="2_gcbbq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jr5mb"]
+size = Vector2(62, 62)
+
+[node name="computer" type="Area2D" unique_id=1798446086]
+script = ExtResource("1_18hgq")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=103610765]
+texture = ExtResource("2_gcbbq")
+hframes = 4
+vframes = 4
+frame = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1166707517]
+shape = SubResource("RectangleShape2D_jr5mb")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

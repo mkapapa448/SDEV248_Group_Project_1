@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dckx83af6oa8n" path="res://enemy1.tscn" id="5_bjebc"]
 [ext_resource type="Script" uid="uid://ct2giugkkfbvc" path="res://area.gd" id="6_5hph3"]
 [ext_resource type="PackedScene" uid="uid://diam88pe4kv4f" path="res://npc.tscn" id="8_5rr72"]
+[ext_resource type="PackedScene" uid="uid://ic4yb7dkbj6f" path="res://computer.tscn" id="9_gyffv"]
 
 [sub_resource type="Gradient" id="Gradient_hbghi"]
 colors = PackedColorArray(0.9098039, 0.76862746, 0.5803922, 1, 1, 0.9254902, 0.7372549, 1)
@@ -93,8 +94,12 @@ position = Vector2(994, 928)
 [node name="Link" parent="." unique_id=1581648787 instance=ExtResource("1_3hls8")]
 position = Vector2(517, 517)
 
-[node name="NPC" parent="." unique_id=503106520 instance=ExtResource("8_5rr72")]
+[node name="NPC" parent="." unique_id=503106520 node_paths=PackedStringArray("husband") instance=ExtResource("8_5rr72")]
 position = Vector2(95, 284)
+husband = NodePath("../Link")
+
+[node name="computer" parent="." unique_id=1798446086 instance=ExtResource("9_gyffv")]
+position = Vector2(190, 1696)
 
 [node name="Area1" type="Area2D" parent="." unique_id=47467994 node_paths=PackedStringArray("camera", "player")]
 position = Vector2(512, 320)

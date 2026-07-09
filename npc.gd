@@ -1,8 +1,10 @@
 extends CharacterBody2D
+@export var husband: CharacterBody2D
+
 @onready var dialogue_box = $Sprite2D2
 @onready var dialogue_text = $Sprite2D2/Label
 
-var dialogue = [["Hey Husband!\nHappy 50th Anniversary!", "Our life has been \nso happy together here.", "I can't help but think,\nthough...", "All of our neighbors have those \nnew Apple computers shipped \nfrom the mainland.","Could you pretty please go and \nfetch me one?","I love you! ^.^"],["I wish I had a computer...","Oh, hi again."],["WOW! Thanks hubby!! <3"]]
+var dialogue = [["Hey Husband!\nHappy 50th Anniversary!", "Our life has been \nso happy together here.", "I can't help but think,\nthough...", "All of our neighbors have those \nnew Apple computers shipped \nfrom the mainland.","Could you pretty please go and \nfetch me one?","I love you! ^.^"],["I wish I had a computer...","Oh, hi again."],["WOW! THANKS! I love you hubby!! <3"]]
 var dialogue_active = false
 var dialogue_message = 0
 var dialogue_stage = 0
@@ -33,6 +35,12 @@ func _physics_process(delta: float) -> void:
 		$Sprite2D3.hide()
 		if dialogue_active != true:
 			dialogue_active = true
+			if dialogue_stage == 1 and husband.has_computer == true:
+				dialogue_stage += 1
+				$Zelda.hide()
+				$HappyZelda.show()
+				husband.has_computer = false
+				Game.win = true
 			dialogue_box.show()
 			dialogue_text.show()
 			update_dialogue()
@@ -44,7 +52,7 @@ func _physics_process(delta: float) -> void:
 			dialogue_message = 0
 			if dialogue_stage == 0:
 				dialogue_stage += 1
-			
+				
 			
 	if dialogue_active == false:
 		dialogue_box.hide()
