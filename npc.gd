@@ -2,7 +2,7 @@ extends CharacterBody2D
 @onready var dialogue_box = $Sprite2D2
 @onready var dialogue_text = $Sprite2D2/Label
 
-var dialogue = [["Hey Husband!\nHappy Anniversary!", "Our life has been \nso happy together here.", "I can't help but think,\nthough...", "All of our neighbors have those \nnew Apple computers shipped \nfrom the mainland.","Could you pretty please go and \nfetch me one?","I love you! ;3"],["I wish I had a computer...","Oh, hi again."],["WOW! Thanks hubby!! <3"]]
+var dialogue = [["Hey Husband!\nHappy 50th Anniversary!", "Our life has been \nso happy together here.", "I can't help but think,\nthough...", "All of our neighbors have those \nnew Apple computers shipped \nfrom the mainland.","Could you pretty please go and \nfetch me one?","I love you! ^.^"],["I wish I had a computer...","Oh, hi again."],["WOW! Thanks hubby!! <3"]]
 var dialogue_active = false
 var dialogue_message = 0
 var dialogue_stage = 0

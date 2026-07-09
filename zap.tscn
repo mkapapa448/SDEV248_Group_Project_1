@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://wfkxqser02ka"]
+
+[ext_resource type="Texture2D" uid="uid://hr6e0k1ao5ag" path="res://Lightning.png" id="1_6ji0k"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_2h8x7"]
+light_mode = 2
+
+[sub_resource type="Gradient" id="Gradient_jsrp5"]
+offsets = PackedFloat32Array(0.16586539, 0.38701922, 0.8629808)
+colors = PackedColorArray(1, 1, 1, 0.44705883, 1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xokuq"]
+gradient = SubResource("Gradient_jsrp5")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.47395834, 0.4982639)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qmgwd"]
+radius = 132.0
+
+[node name="zap" type="Area2D" unique_id=1338455219]
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=66935840]
+clip_children = 2
+material = SubResource("CanvasItemMaterial_2h8x7")
+texture = SubResource("GradientTexture2D_xokuq")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D2" unique_id=716367292]
+scale = Vector2(8, 8)
+texture = ExtResource("1_6ji0k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1915211091]
+shape = SubResource("CircleShape2D_qmgwd")

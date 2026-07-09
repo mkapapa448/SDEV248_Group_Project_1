@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://d1qbuwcnsi3o7"]
 
-[ext_resource type="Texture2D" uid="uid://ddd31j0prr56t" path="res://pixil-frame-0 (3).png" id="1_a85iw"]
 [ext_resource type="Script" uid="uid://dbq6c53ucgs5g" path="res://projectile.gd" id="1_qxf0c"]
+[ext_resource type="Texture2D" uid="uid://hr6e0k1ao5ag" path="res://Lightning.png" id="2_qxf0c"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qxf0c"]
 radius = 16.0
@@ -10,10 +10,7 @@ radius = 16.0
 script = ExtResource("1_qxf0c")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1528004491]
-texture = ExtResource("1_a85iw")
-hframes = 4
-vframes = 4
-frame = 4
+texture = ExtResource("2_qxf0c")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1706662182]
 shape = SubResource("CircleShape2D_qxf0c")

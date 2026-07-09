@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://da2u70uaqmfmf"]
+
+[ext_resource type="Script" uid="uid://dvbpbrp55dd4a" path="res://enemy_2.gd" id="1_jugo2"]
+[ext_resource type="Texture2D" uid="uid://ddd31j0prr56t" path="res://pixil-frame-0 (3).png" id="2_b3jlp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g51g3"]
+size = Vector2(62, 62)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pa8dn"]
+size = Vector2(64, 320)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g51g3"]
+radius = 112.0
+
+[node name="Enemy2" type="CharacterBody2D" unique_id=1182956759]
+motion_mode = 1
+script = ExtResource("1_jugo2")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=263061093]
+texture = ExtResource("2_b3jlp")
+hframes = 4
+vframes = 4
+frame = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=848546977]
+shape = SubResource("RectangleShape2D_g51g3")
+
+[node name="sight" type="Area2D" parent="." unique_id=839836580]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="sight" unique_id=1234982543]
+position = Vector2(0, 192)
+shape = SubResource("RectangleShape2D_pa8dn")
+
+[node name="Marker2D" type="Marker2D" parent="sight" unique_id=403089961]
+
+[node name="attackTimer" type="Timer" parent="." unique_id=1962767643]
+wait_time = 0.7
+one_shot = true
+
+[node name="spidey_sense" type="Area2D" parent="." unique_id=702267289]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="spidey_sense" unique_id=76835553]
+shape = SubResource("CircleShape2D_g51g3")
+
+[connection signal="body_entered" from="sight" to="." method="_on_sight_body_entered"]
+[connection signal="body_exited" from="sight" to="." method="_on_sight_body_exited"]
+[connection signal="body_entered" from="spidey_sense" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="spidey_sense" to="." method="_on_area_2d_body_exited"]
