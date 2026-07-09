@@ -2,19 +2,44 @@
 
 [ext_resource type="Script" uid="uid://dvbpbrp55dd4a" path="res://enemy_2.gd" id="1_jugo2"]
 [ext_resource type="Texture2D" uid="uid://ddd31j0prr56t" path="res://pixil-frame-0 (3).png" id="2_b3jlp"]
+[ext_resource type="Texture2D" uid="uid://hr6e0k1ao5ag" path="res://Lightning.png" id="2_fb6pl"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_cp8lj"]
+light_mode = 2
+
+[sub_resource type="Gradient" id="Gradient_jsrp5"]
+offsets = PackedFloat32Array(0.16586539, 0.38701922, 0.6706731)
+colors = PackedColorArray(1, 1, 1, 0.44705883, 1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1elri"]
+gradient = SubResource("Gradient_jsrp5")
+width = 228
+height = 228
+fill = 1
+fill_from = Vector2(0.47395834, 0.4982639)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g51g3"]
 size = Vector2(62, 62)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pa8dn"]
-size = Vector2(64, 320)
+size = Vector2(62, 320)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g51g3"]
-radius = 112.0
+radius = 95.0
 
 [node name="Enemy2" type="CharacterBody2D" unique_id=1182956759]
 motion_mode = 1
 script = ExtResource("1_jugo2")
+
+[node name="zap" type="Sprite2D" parent="." unique_id=926458491]
+visible = false
+clip_children = 2
+material = SubResource("CanvasItemMaterial_cp8lj")
+texture = SubResource("GradientTexture2D_1elri")
+
+[node name="Sprite2D" type="Sprite2D" parent="zap" unique_id=13993117]
+scale = Vector2(6.3, 6.3)
+texture = ExtResource("2_fb6pl")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=263061093]
 texture = ExtResource("2_b3jlp")
@@ -34,15 +59,16 @@ shape = SubResource("RectangleShape2D_pa8dn")
 [node name="Marker2D" type="Marker2D" parent="sight" unique_id=403089961]
 
 [node name="attackTimer" type="Timer" parent="." unique_id=1962767643]
-wait_time = 0.7
+wait_time = 2.5
 one_shot = true
 
-[node name="spidey_sense" type="Area2D" parent="." unique_id=702267289]
+[node name="spidey_sense" type="Area2D" parent="." unique_id=2103664092]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="spidey_sense" unique_id=76835553]
 shape = SubResource("CircleShape2D_g51g3")
 
 [connection signal="body_entered" from="sight" to="." method="_on_sight_body_entered"]
 [connection signal="body_exited" from="sight" to="." method="_on_sight_body_exited"]
+[connection signal="timeout" from="attackTimer" to="." method="_on_attack_timer_timeout"]
 [connection signal="body_entered" from="spidey_sense" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="spidey_sense" to="." method="_on_area_2d_body_exited"]

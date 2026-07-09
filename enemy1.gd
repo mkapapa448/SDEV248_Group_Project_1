@@ -73,10 +73,10 @@ func _on_sight_body_exited(body: Node2D) -> void:
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body is CharacterBody2D and body.name == "Link":
+	if body is CharacterBody2D and body.name != name:
 		speed = 300
 
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
-	if body is CharacterBody2D and body.name == "Link":
+	if body is CharacterBody2D and body.name != name:
 		speed = 100
