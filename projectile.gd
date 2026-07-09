@@ -18,3 +18,7 @@ func _on_body_entered(body: Node2D) -> void:
 	if body is CharacterBody2D and body.name == "Link":
 		body.impact(2*velocity/5)
 		queue_free()
+	elif body is not CharacterBody2D:
+		queue_free()
+	else:
+		return
