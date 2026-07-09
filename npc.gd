@@ -31,8 +31,9 @@ func _physics_process(delta: float) -> void:
 	velocity.x = 0
 			
 	if in_zone and Input.is_action_just_pressed('interact'):
-		$Label.hide()
-		$Sprite2D3.hide()
+		if Game.win == false:
+			$Label.hide()
+			$Sprite2D3.hide()
 		if dialogue_active != true:
 			dialogue_active = true
 			if dialogue_stage == 1 and husband.has_computer == true:
@@ -47,7 +48,7 @@ func _physics_process(delta: float) -> void:
 		elif dialogue_message < dialogue[dialogue_stage].size() - 1:
 			dialogue_message += 1
 			update_dialogue()
-		else:
+		elif Game.win != true:
 			dialogue_active = false
 			dialogue_message = 0
 			if dialogue_stage == 0:

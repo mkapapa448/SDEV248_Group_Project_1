@@ -71,7 +71,7 @@ position = Vector2(532.9998, 1491.0001)
 scale = Vector2(4.0742574, 4.058706)
 texture = ExtResource("1_hn12h")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1494026063]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1494026063 node_paths=PackedStringArray("zelda")]
 position = Vector2(516, 320)
 zoom = Vector2(1.02, 1.02)
 limit_left = 0
@@ -79,6 +79,7 @@ limit_top = 0
 limit_right = 1024
 limit_bottom = 1920
 script = ExtResource("2_rka8t")
+zelda = NodePath("../NPC")
 
 [node name="Layer0" type="TileMapLayer" parent="." unique_id=1790765079]
 use_parent_material = true
@@ -86,7 +87,7 @@ tile_map_data = PackedByteArray("AAAAAAAABAAAAAEAAAABAAAABAAAAAEAAAACAAAABAAAAAE
 tile_set = SubResource("TileSet_5hph3")
 
 [node name="Enemy2" parent="." unique_id=1182956759 instance=ExtResource("5_5rr72")]
-position = Vector2(672, 1632)
+position = Vector2(352, 1632)
 
 [node name="Enemy1" parent="." unique_id=1209413199 instance=ExtResource("5_bjebc")]
 position = Vector2(994, 928)
